@@ -1,0 +1,28 @@
+{
+  "name": "mean-toot",
+  "version": "1.0.0",
+  "description": "MEAN stack with Acosta",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binDitto/MEAN-STACK-TOOT.git"
+  },
+  "keywords": [
+    "Mean",
+    "Stack"
+  ],
+  "author": "Bin Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binDitto/MEAN-STACK-TOOT/issues"
+  },
+  "homepage": "https://github.com/binDitto/MEAN-STACK-TOOT#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.2"
+  }
+}
