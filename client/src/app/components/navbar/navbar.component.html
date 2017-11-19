@@ -26,8 +26,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li>
-              <a href="#">Action</a>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/register">Register</a>
             </li>
             <li>
               <a href="#">Another action</a>
