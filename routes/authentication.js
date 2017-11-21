@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
 module.exports = (router) => {
 
@@ -124,7 +126,10 @@ module.exports = (router) => {
                     if (!validPassword) {
                         res.json({ success: false, message: 'Password or Username does not exist.'});
                     } else {
-                        res.json({ success: true, message: 'Success'})
+                        // CREATE WEB TOKEN FOR USER TO USE - will logout after 24hrs
+                        const token = jwt.sign({userId: user._id}, config.secret, { expiresIn: '24h' });
+                        // specify what data is retrieved from back end user: { username: user.username }
+                        res.json({ success: true, message: 'Success', token: token, user: { username: user.username}});
                     }
                 }
             });

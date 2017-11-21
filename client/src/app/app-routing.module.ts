@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,8 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'register', component: RegisterComponent},
-  //Can add page not found component page
+  { path: 'login', component: LoginComponent },
+  // Can add page not found component page
   { path: '**', component: HomeComponent }
 ];
 
