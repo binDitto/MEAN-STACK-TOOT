@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 
 
 
@@ -29,9 +30,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FlashMessagesModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,10 +15,10 @@
         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
           <a href="#" routerLink="/" >Home</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/dashboard" >Dashboard</a>
         </li>
-        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/profile">Profile</a>
         </li>
         <li class="dropdown">
@@ -41,7 +41,7 @@
               <a href="#">Separated link</a>
             </li>
             <li>
-              <a href="#">One more separated link</a>
+              <a *ngIf="authService.loggedIn()" href="#" (click)="onLogoutClick()">Log Out</a>
             </li>
           </ul>
         </li>

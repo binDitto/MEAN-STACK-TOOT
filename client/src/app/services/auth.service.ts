@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+// npm install angular2-jwt --save
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -49,6 +51,16 @@ export class AuthService {
 
   login(user) {
     return this.http.post(this.domain + '/authentication/login', user).map(res => res.json());
+  }
+
+  logout(){
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
+
+  loggedIn() {
+    return tokenNotExpired();
   }
 
   storeUserData(token, user) {
