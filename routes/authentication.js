@@ -136,5 +136,32 @@ module.exports = (router) => {
         }
     });
 
+    // middleware to receive headers and tokens
+    router.use((req, res, next) => {
+        const token = req.headers['authorization'];
+        if (!token) {
+            res.json({ success: false, message: 'No token provided'});
+        } else {
+            jwt.verify(token, config.secret, (err, decoded) => {
+                if (err) {
+                    res.json({ success: false, message: 'Token invalid: ' + err});
+                } else {
+                    req.decoded = decoded;
+                    next();
+                }
+            });
+        }
+    });
+
+    router.get('/profile', (req, res) => {
+        // res.send('test');
+        // res.send(req.decoded);
+        User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
+            if (err) { return res.json({ success: false, messages: err}); }
+            if (!user) { return res.json({ success: false, message: 'User not found'}); }
+
+            return res.json({success: true, user: user });
+        });
+    });
     return router;
 }
